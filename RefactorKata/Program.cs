@@ -19,15 +19,14 @@ namespace RefactorKata
             //TODO: Replace with Dapper
             while (reader.Read())
             {
-                var prod = new Product();
-                prod.name = reader["Name"].ToString();
+                var prod = new Product{name = reader["Name"].ToString() };
                 products.Add(prod);
             }
             conn.Dispose();
-            Console.WriteLine("Products Loaded!");
-            for(var i =0; i< products.Count; i++)
+
+            foreach (var product in products)
             {
-                Console.WriteLine(products[i].name);
+                Console.WriteLine(product.Name);
             }
         }
     }
