@@ -19,7 +19,7 @@ namespace RefactorKata
             //TODO: Replace with Dapper
             while (reader.Read())
             {
-                var prod = new Product{name = reader["Name"].ToString() };
+                var prod = new Product{Name = reader["Name"].ToString() };
                 products.Add(prod);
             }
             conn.Dispose();
@@ -30,9 +30,5 @@ namespace RefactorKata
             }
         }
     }
-    public class Product
-    {
-        public string name;
-        public string Name { get { return name; } set { name = value; } }
-    }
+   
 }
