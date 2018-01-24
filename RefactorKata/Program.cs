@@ -8,19 +8,20 @@ namespace RefactorKata
     {
         static void Main(string[] args)
         {
+            // TODO add connection config when its taught 
+
             var conn = new SqlConnection("Server=.;Database=myDataBase;User Id=myUsername;Password = myPassword;");
 
             var cmd = conn.CreateCommand();
             cmd.CommandText = "select * from Products";
-           
+
             var reader = cmd.ExecuteReader();
             var products = new List<Product>();
 
-            //TODO: Replace with Dapper
+            //TODO: Replace with Dapper once taught
             while (reader.Read())
             {
-                var prod = new Product{Name = reader["Name"].ToString() };
-                products.Add(prod);
+                products.Add(new Product { Name = reader["Name"].ToString() });
             }
             conn.Dispose();
 
@@ -30,5 +31,5 @@ namespace RefactorKata
             }
         }
     }
-   
+
 }
